@@ -1,0 +1,15 @@
+https://github.com/irfanICMLL/structure_knowledge_distillation
+
+Q1: when the batch size is smaller (such as 8 or 4), the performance is drop a lot. so the author discover a new kind of distillation loss, which is more useful.
+A1：https://arxiv.org/abs/2011.13256. Channel-wise Distillation for Semantic Segmentation
+
+Q2: Table 2 shows it performs best when beta=2x2.
+But in run_train_val.sh, pool-scale is 0.5, thus finally in CriterionPairWiseforWholeFeatAfterPool, the patch size is half of the original feature map size, not 2x2.
+A2: this question is not be answered.
+
+Q3: why structure knowledge distillation is effective and how it can be used for regression tasks? How to choose the intermediate feature maps for pair-wise distillation?
+A3: it considers the correlation among pixel. If the unary part is hard to learn or can not be trained effectively, employing the structure KD will help training. I tend to choose some deeper features. Because abstract semantics makes sense. 
+Besides, the spatial size is smaller which is more efficient.
+
+Q4: paper use average pooling not max pooling.
+A4: max pooling can achieve better performance.
